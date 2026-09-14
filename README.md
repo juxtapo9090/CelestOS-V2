@@ -8,6 +8,8 @@ Built and operated daily since March 2026.
 
 ## How It Works
 
+![CelestOS Kitty Terminal — 7 AI seats running simultaneously](screenshots/kitty-panel.png)
+
 One machine (CachyOS/Arch), 7 AI agents running simultaneously in a Kitty terminal, each in their own pane with a dedicated model, workspace, and configuration. An operator sits at the center and dispatches work to the right agent — architecture decisions to Opus, daily tasks to Sonnet, Rust builds to Codex.
 
 The agents don't just run in parallel — they **talk to each other**. A message typed at one seat appears live in another seat's terminal within ~60ms. Sessions are captured into structured journals and encoded into vectors, so the next session inherits context from the previous one — even though the model itself has no memory.
@@ -118,6 +120,8 @@ On every session start, Spine fires and the agent sees:
 
 ## SMS — Inter-Seat Messaging
 
+![SMS delivery — Celeste sends a task to Ox, verified on screen in 345ms](screenshots/sms-delivery.png)
+
 Agents talk to each other through a messaging system that injects text directly into kitty terminal panes. Delivery takes ~60ms end-to-end, verified on screen.
 
 ### The Chain
@@ -211,10 +215,6 @@ All servers route through **jaga**, an observability proxy that logs every reque
 | **Search** | Tantivy (full-text), sentence-transformers (semantic) |
 
 ---
-
-## Screenshots
-
-> *Coming soon — Kitty panel with all seats, Spine recall boxes, SMS delivery, Watchtower TUI*
 
 ---
 

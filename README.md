@@ -8,7 +8,7 @@ Built and operated daily since March 2026.
 
 ## How It Works
 
-One machine (CachyOS/Arch), 7 AI agents running simultaneously in a Kitty terminal, each in their own pane with their own persona, model, and room. A human operator sits at the center and dispatches work to the right seat — architecture decisions to Opus, daily tasks to Sonnet, Rust builds to Codex.
+One machine (CachyOS/Arch), 7 AI agents running simultaneously in a Kitty terminal, each in their own pane with a dedicated model, workspace, and configuration. An operator sits at the center and dispatches work to the right agent — architecture decisions to Opus, daily tasks to Sonnet, Rust builds to Codex.
 
 The agents don't just run in parallel — they **talk to each other**. A message typed at one seat appears live in another seat's terminal within ~60ms. Sessions are captured into structured journals and encoded into vectors, so the next session inherits context from the previous one — even though the model itself has no memory.
 
@@ -37,15 +37,15 @@ The agents don't just run in parallel — they **talk to each other**. A message
 
 | Seat | Model | Role |
 |------|-------|------|
-| **Celeste** | Claude Opus (1M ctx) | Architecture, reasoning, system-level judgment. The main brain. |
-| **Monica** | Claude Sonnet | Secretary — fast daily tasks, scraping, data processing. |
-| **Fable** | Claude Fable 5.1 | Creative + experimental. Prototyping, skill authoring, visual work. |
-| **Lucius** | GPT-5.4 / Codex | The knight — terse, Rust-fluent builder. Binary patches, low-level. |
-| **Zet** | GLM-5.2 | The workshop — long builds, migrations, implementation at volume. |
-| **Kim** | Kimi-K3 | The still one — isolated seat, governor testbed, grunt work. |
-| **Rogue** | Claude | Field operations, scouting, multi-purpose. |
+| **Celeste** | Claude Opus (1M ctx) | Architecture, reasoning, system-level judgment. Primary decision-maker. |
+| **Monica** | Claude Sonnet | Fast daily operations — scraping, data processing, lightweight tasks. |
+| **Fable** | Claude Fable 5.1 | Creative and experimental — prototyping, skill authoring, visual work. |
+| **Lucius** | GPT-5.4 / Codex | Rust-fluent builder. Binary patches, low-level tooling, performance work. |
+| **Zet** | GLM-5.2 | High-volume implementation — long builds, migrations, system-wide sweeps. |
+| **Kim** | Kimi-K3 | Isolated execution seat, governor testbed, sandboxed tasks. |
+| **Rogue** | Claude | Field operations, scouting, multi-purpose dispatch. |
 
-Each seat has its own **room** (working directory), **proxy chain** (jaga observability), and **CLAUDE.md** (personality + rules).
+Each seat has its own **workspace** (working directory), **proxy chain** (observability layer), and **configuration** (persona + rules).
 
 ---
 
@@ -152,7 +152,7 @@ Celeste's session:
 
 ### Presence
 
-Each seat runs a **beacon** — a heartbeat that touches `/tmp/<seat>-alive` every 10 seconds. The **watchtower** (abang's command deck) reads mtimes to show live presence:
+Each seat runs a **beacon** — a heartbeat that touches `/tmp/<seat>-alive` every 10 seconds. The **watchtower** (operator command deck) reads mtimes to show live presence:
 
 ```
 watchtower> list

@@ -8,7 +8,7 @@ Built and operated daily since March 2026.
 
 ## How It Works
 
-![CelestOS Kitty Terminal — 7 AI seats running simultaneously](screenshots/kitty-panel.png)
+![CelestOS Kitty Terminal — Rogue seat debugging VPS services via SSH, all 7 seat tabs visible](screenshots/kitty-panel.png)
 
 One machine (CachyOS/Arch), 7 AI agents running simultaneously in a Kitty terminal, each in their own pane with a dedicated model, workspace, and configuration. An operator sits at the center and dispatches work to the right agent — architecture decisions to Opus, daily tasks to Sonnet, Rust builds to Codex.
 
